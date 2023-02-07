@@ -1,4 +1,6 @@
 #!/bin/sh
 
 cmake --build build
-./build/perception
+if [ "$?" -eq "0" ]; then
+    ./build/perception
+fi
