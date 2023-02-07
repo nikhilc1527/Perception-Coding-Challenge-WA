@@ -1,12 +1,15 @@
 #include <iostream>
 #include <string>
 
-#include "lib.hpp"
+#include <opencv4/opencv2/opencv.hpp>
 
-auto main() -> int
-{
-  auto const lib = library {};
-  auto const message = "Hello from " + lib.name + "!";
-  std::cout << message << '\n';
+using namespace cv;
+
+auto main() -> int {
+  auto red_img = imread("static/red.png", IMREAD_COLOR);
+  namedWindow("input", WINDOW_NORMAL);
+  imshow("input", red_img);
+  waitKey(0);
+  
   return 0;
 }

@@ -30,6 +30,9 @@ target_compile_features(perception_lib PUBLIC cxx_std_17)
 
 # ---- Declare executable ----
 
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
 add_executable(perception_exe source/main.cpp)
 add_executable(perception::exe ALIAS perception_exe)
 
@@ -37,7 +40,7 @@ set_property(TARGET perception_exe PROPERTY OUTPUT_NAME perception)
 
 target_compile_features(perception_exe PRIVATE cxx_std_17)
 
-target_link_libraries(perception_exe PRIVATE perception_lib)
+target_link_libraries(perception_exe PRIVATE perception_lib opencv_core opencv_imgcodecs ${OpenCV_LIBS})
 
 # ---- Install rules ----
 
